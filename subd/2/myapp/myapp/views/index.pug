@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    div
+        ul
+          li
+            a(href='/') Главная страница
+            if user
+              if user.id_role === 2 || user.id_role === 1
+                li
+                  a(href='/clients') Клиенты
+              if user.id_role === 3 || user.id_role === 1 || user.id_role === 2
+                li
+                  a(href='/orders') Заказы
+              if user.id_role === 2 || user.id_role === 1 
+                li
+                  a(href='/payments') Платежи
+              if user.id_role === 1
+                li
+                  a(href='/users') Пользователи
+              li
+                a(href='', id='Logout') Выйти
+            else
+                li
+                    a(href='', id='Login') Войти
